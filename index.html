@@ -508,6 +508,136 @@
       gap: 0.4rem;
     }
 
+    /* =========
+       SEÇÃO GALERIAS
+       ========= */
+    .galerias-wrapper {
+      background: #050505;
+      border-top: 1px solid var(--cor-borda);
+      border-bottom: 1px solid var(--cor-borda);
+    }
+
+    .galerias {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 3rem;
+    }
+
+    .galerias-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.6rem;
+    }
+
+    @media (max-width: 1000px) {
+      .galerias-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 650px) {
+      .galerias-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card-galeria {
+      background: var(--cor-fundo-card);
+      border-radius: 12px;
+      border: 1px solid var(--cor-borda);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card-galeria:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 30px rgba(0,0,0,0.7);
+      border-color: var(--cor-destaque);
+    }
+
+    .card-galeria-thumb {
+      position: relative;
+      height: 150px;
+      background: radial-gradient(circle at top left, #ffffff11 0, transparent 60%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff55;
+      font-size: 2.4rem;
+    }
+
+    .card-galeria-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--cor-destaque);
+      color: #000;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .card-galeria-body {
+      padding: 1rem 1rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      flex: 1;
+    }
+
+    .card-galeria-titulo {
+      font-size: 1rem;
+    }
+
+    .card-galeria-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.2rem;
+      font-size: 0.85rem;
+      color: var(--cor-texto-sec);
+    }
+
+    .card-galeria-info-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .card-galeria-info-item i {
+      font-size: 0.9rem;
+      color: var(--cor-destaque);
+    }
+
+    .card-galeria-rodape {
+      margin-top: 0.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--cor-texto-sec);
+    }
+
+    .card-galeria-link {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--cor-destaque);
+    }
+
+    .card-galeria-link i {
+      font-size: 0.85rem;
+    }
+
     /* FOOTER */
     footer {
       padding: 1rem;
@@ -611,7 +741,7 @@
           </p>
           <p class="hero-lateral-destaque">
             <i class="fas fa-circle-play"></i>
-            Próximo passo: seção <strong>“Como funciona”</strong> logo abaixo.
+            Próximo passo: <strong>“Como funciona” e “Galerias recentes”</strong> logo abaixo.
           </p>
         </aside>
       </section>
@@ -681,9 +811,121 @@
         </article>
       </div>
     </section>
+
+    <!-- SEÇÃO GALERIAS RECENTES -->
+    <div class="galerias-wrapper" id="galerias">
+      <section class="galerias">
+        <div class="secao-cabecalho">
+          <div class="secao-kicker">Galerias recentes</div>
+          <h2 class="secao-titulo">Alguns jogos já fotografados</h2>
+          <p class="secao-subtitulo">
+            Aqui é só um exemplo de como as galerias vão aparecer. Depois você pode trocar os textos e links
+            para apontar para o Google Drive, OneDrive, ou outra plataforma onde as fotos estiverem.
+          </p>
+        </div>
+
+        <div class="galerias-grid">
+          <!-- Card 1 -->
+          <article class="card-galeria">
+            <div class="card-galeria-thumb">
+              <i class="fas fa-image"></i>
+              <div class="card-galeria-badge">42 fotos</div>
+            </div>
+            <div class="card-galeria-body">
+              <h3 class="card-galeria-titulo">Sub-20 · Time Azul x Time Vermelho</h3>
+              <div class="card-galeria-info">
+                <div class="card-galeria-info-item">
+                  <i class="fas fa-calendar-alt"></i>
+                  <span>02/03/2026</span>
+                </div>
+                <div class="card-galeria-info-item">
+                  <i class="fas fa-trophy"></i>
+                  <span>Copa da Cidade</span>
+                </div>
+              </div>
+              <div class="card-galeria-rodape">
+                <span>Galeria de teste 1</span>
+                <a
+                  class="card-galeria-link"
+                  href="#"
+                  target="_blank"
+                >
+                  Ver galeria
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card-galeria">
+            <div class="card-galeria-thumb">
+              <i class="fas fa-image"></i>
+              <div class="card-galeria-badge">35 fotos</div>
+            </div>
+            <div class="card-galeria-body">
+              <h3 class="card-galeria-titulo">Amistoso · Amigos do Marcos x Seleção Bairro</h3>
+              <div class="card-galeria-info">
+                <div class="card-galeria-info-item">
+                  <i class="fas fa-calendar-alt"></i>
+                  <span>15/02/2026</span>
+                </div>
+                <div class="card-galeria-info-item">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>Campo Municipal</span>
+                </div>
+              </div>
+              <div class="card-galeria-rodape">
+                <span>Galeria de teste 2</span>
+                <a
+                  class="card-galeria-link"
+                  href="#"
+                  target="_blank"
+                >
+                  Ver galeria
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card-galeria">
+            <div class="card-galeria-thumb">
+              <i class="fas fa-image"></i>
+              <div class="card-galeria-badge">58 fotos</div>
+            </div>
+            <div class="card-galeria-body">
+              <h3 class="card-galeria-titulo">Veteranos · União FC x Real Master</h3>
+              <div class="card-galeria-info">
+                <div class="card-galeria-info-item">
+                  <i class="fas fa-calendar-alt"></i>
+                  <span>28/01/2026</span>
+                </div>
+                <div class="card-galeria-info-item">
+                  <i class="fas fa-trophy"></i>
+                  <span>Taça Amigos</span>
+                </div>
+              </div>
+              <div class="card-galeria-rodape">
+                <span>Galeria de teste 3</span>
+                <a
+                  class="card-galeria-link"
+                  href="#"
+                  target="_blank"
+                >
+                  Ver galeria
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
   </main>
 
-  <footer>
+  <footer id="contato">
     <p class="texto-pequeno">
       © 2026 Marcos – Fotografia de Futebol · Site em desenvolvimento
     </p>
