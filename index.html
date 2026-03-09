@@ -38,9 +38,7 @@
       --fonte-texto:      'Inter',  sans-serif;
     }
 
-    /* =========
-       RESET
-       ========= */
+    /* RESET */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -61,9 +59,7 @@
       text-decoration: none;
     }
 
-    /* =========
-       TIPOGRAFIA
-       ========= */
+    /* TIPOGRAFIA */
     h1, h2, h3 {
       font-family: var(--fonte-titulo);
       letter-spacing: 0.04em;
@@ -92,9 +88,7 @@
       p  { font-size: 0.95rem; }
     }
 
-    /* =========
-       HEADER + MENU
-       ========= */
+    /* HEADER + MENU */
     header {
       background: var(--cor-header);
       border-bottom: 1px solid var(--cor-borda);
@@ -201,7 +195,6 @@
       font-size: 0.9rem;
     }
 
-    /* Menu compacto no mobile */
     @media (max-width: 768px) {
       .header-inner {
         flex-direction: column;
@@ -224,9 +217,7 @@
       }
     }
 
-    /* =========
-       MAIN
-       ========= */
+    /* MAIN / HERO */
     main {
       flex: 1;
       display: flex;
@@ -236,14 +227,24 @@
     }
 
     .container {
-      max-width: 700px;
+      max-width: 900px;
       width: 100%;
       background: var(--cor-fundo-card);
       border-radius: 12px;
       border: 1px solid var(--cor-borda);
-      padding: 2.5rem 2rem;
+      padding: 2.8rem 2.4rem;
       box-shadow: 0 18px 35px rgba(0,0,0,0.6);
-      text-align: center;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    @media (max-width: 800px) {
+      .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
     }
 
     .hero-kicker {
@@ -255,19 +256,93 @@
       margin-bottom: 0.75rem;
     }
 
-    .hero-title { margin-bottom: 1rem; }
-    .hero-text  { margin-bottom: 2rem; }
+    .hero-title {
+      margin-bottom: 0.8rem;
+    }
 
-    .hero-highlight { color: var(--cor-destaque); }
+    .hero-subtitle {
+      font-size: 0.95rem;
+      color: var(--cor-texto-sec);
+      margin-bottom: 1.5rem;
+    }
 
-    /* =========
-       BOTÕES
-       ========= */
+    .hero-highlight {
+      color: var(--cor-destaque);
+    }
+
+    .hero-beneficios {
+      list-style: none;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-beneficios li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--cor-texto-sec);
+    }
+
+    .hero-beneficios i {
+      color: var(--cor-sucesso);
+      margin-top: 0.15rem;
+    }
+
+    @media (max-width: 800px) {
+      .hero-beneficios {
+        text-align: left;
+        align-items: flex-start;
+      }
+    }
+
+    .hero-lateral {
+      border-radius: 12px;
+      border: 1px dashed var(--cor-borda);
+      padding: 1.4rem 1.2rem;
+      background: radial-gradient(circle at top left, #33333333 0, transparent 60%);
+    }
+
+    .hero-lateral-titulo {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.7rem;
+      color: var(--cor-texto);
+    }
+
+    .hero-lateral p {
+      font-size: 0.9rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-lateral-destaque {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      color: var(--cor-destaque);
+    }
+
+    .hero-lateral-destaque i {
+      color: var(--cor-destaque);
+    }
+
+    /* BOTÕES */
     .botoes-acao {
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
-      justify-content: center;
+      justify-content: flex-start;
+    }
+
+    @media (max-width: 800px) {
+      .botoes-acao {
+        justify-content: center;
+      }
     }
 
     .btn-whatsapp {
@@ -335,9 +410,7 @@
       transform: translateY(-1px);
     }
 
-    /* =========
-       FOOTER
-       ========= */
+    /* FOOTER */
     footer {
       padding: 1rem;
       text-align: center;
@@ -378,39 +451,71 @@
     </div>
   </header>
 
+  <!-- HERO PRINCIPAL -->
   <main>
-    <div class="container">
-      <div class="hero-kicker">Fotografia esportiva</div>
+    <section class="container" id="home">
+      <div>
+        <div class="hero-kicker">Fotografia esportiva</div>
 
-      <h2 class="hero-title">
-        <span class="hero-highlight">Site no ar</span> com GitHub Pages
-      </h2>
+        <h2 class="hero-title">
+          <span class="hero-highlight">Suas fotos de jogo</span> organizadas e fáceis de acessar
+        </h2>
 
-      <p class="hero-text">
-        Este é um site de teste do Marcos para aprender a publicar com GitHub Pages.
-        Em breve aqui será a home completa de fotografia de futebol:
-        galerias de jogos, explicação de como funciona e contato direto pelo WhatsApp.
-      </p>
+        <p class="hero-subtitle">
+          Eu fotografo as partidas e entrego as imagens em uma galeria simples de usar.
+          Você encontra seu jogo, vê todas as fotos e fala comigo pelo WhatsApp para combinar o download em alta qualidade.
+        </p>
 
-      <div class="botoes-acao">
-        <a
-          class="btn-whatsapp"
-          href="https://wa.me/5591991075804"
-          target="_blank"
-        >
-          <i class="fab fa-whatsapp"></i>
-          Falar no WhatsApp
-        </a>
+        <ul class="hero-beneficios">
+          <li>
+            <i class="fas fa-check-circle"></i>
+            <span>Galerias separadas por time, campeonato e data.</span>
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i>
+            <span>Visualize as fotos em qualquer dispositivo, sem precisar instalar nada.</span>
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i>
+            <span>Fale direto comigo no WhatsApp para tirar dúvidas e combinar detalhes.</span>
+          </li>
+        </ul>
 
-        <a
-          class="btn-secundario"
-          href="#galerias"
-        >
-          <i class="fas fa-image"></i>
-          Ver portfólio
-        </a>
+        <div class="botoes-acao">
+          <a
+            class="btn-whatsapp"
+            href="https://wa.me/5591991075804"
+            target="_blank"
+          >
+            <i class="fab fa-whatsapp"></i>
+            Falar no WhatsApp
+          </a>
+
+          <a
+            class="btn-secundario"
+            href="#galerias"
+          >
+            <i class="fas fa-image"></i>
+            Ver galerias
+          </a>
+        </div>
       </div>
-    </div>
+
+      <aside class="hero-lateral">
+        <div class="hero-lateral-titulo">
+          Como vai funcionar o site
+        </div>
+        <p>
+          Esta página ainda é um teste, mas já está pronta para crescer.
+          As próximas seções vão mostrar o passo a passo para encontrar seu jogo,
+          ver as fotos e entrar em contato comigo.
+        </p>
+        <p class="hero-lateral-destaque">
+          <i class="fas fa-circle-play"></i>
+          Próximo passo: seção <strong>“Como funciona”</strong> logo abaixo.
+        </p>
+      </aside>
+    </section>
   </main>
 
   <footer>
