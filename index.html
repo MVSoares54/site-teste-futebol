@@ -217,16 +217,19 @@
       }
     }
 
-    /* MAIN / HERO */
+    /* HERO / MAIN */
     main {
       flex: 1;
+    }
+
+    .hero-wrapper {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 2.5rem 1.5rem;
+      padding: 2.5rem 1.5rem 2rem;
     }
 
-    .container {
+    .hero-container {
       max-width: 900px;
       width: 100%;
       background: var(--cor-fundo-card);
@@ -241,7 +244,7 @@
     }
 
     @media (max-width: 800px) {
-      .container {
+      .hero-container {
         grid-template-columns: 1fr;
         text-align: center;
       }
@@ -410,6 +413,101 @@
       transform: translateY(-1px);
     }
 
+    /* =========
+       SEÇÃO COMO FUNCIONA
+       ========= */
+    .secao {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1.5rem 2.5rem;
+    }
+
+    .secao-cabecalho {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .secao-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--cor-destaque);
+      margin-bottom: 0.5rem;
+    }
+
+    .secao-titulo {
+      font-size: 1.5rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .secao-subtitulo {
+      font-size: 0.95rem;
+      color: var(--cor-texto-sec);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .como-funciona-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    @media (max-width: 900px) {
+      .como-funciona-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .como-card {
+      background: var(--cor-fundo-card);
+      border-radius: 12px;
+      border: 1px solid var(--cor-borda);
+      padding: 1.3rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .como-etapa {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--cor-texto-sec);
+    }
+
+    .como-etapa-numero {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      border: 1px solid var(--cor-borda);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: var(--cor-destaque);
+    }
+
+    .como-titulo {
+      font-size: 1rem;
+    }
+
+    .como-texto {
+      font-size: 0.9rem;
+      color: var(--cor-texto-sec);
+    }
+
+    .como-icons {
+      margin-top: 0.3rem;
+      font-size: 1.1rem;
+      color: var(--cor-destaque);
+      display: flex;
+      gap: 0.4rem;
+    }
+
     /* FOOTER */
     footer {
       padding: 1rem;
@@ -425,7 +523,7 @@
   <!-- HEADER COM MENU -->
   <header>
     <div class="header-inner">
-      <a href="#" class="logo">
+      <a href="#home" class="logo">
         <div class="logo-icon">
           <i class="fas fa-futbol"></i>
         </div>
@@ -434,7 +532,7 @@
 
       <nav>
         <div class="nav-links">
-          <a href="#" class="ativo">Home</a>
+          <a href="#home" class="ativo">Home</a>
           <a href="#galerias">Galerias</a>
           <a href="#como-funciona">Como funciona</a>
           <a href="#contato">Contato</a>
@@ -451,70 +549,137 @@
     </div>
   </header>
 
-  <!-- HERO PRINCIPAL -->
   <main>
-    <section class="container" id="home">
-      <div>
-        <div class="hero-kicker">Fotografia esportiva</div>
+    <!-- HERO PRINCIPAL -->
+    <div class="hero-wrapper" id="home">
+      <section class="hero-container">
+        <div>
+          <div class="hero-kicker">Fotografia esportiva</div>
 
-        <h2 class="hero-title">
-          <span class="hero-highlight">Suas fotos de jogo</span> organizadas e fáceis de acessar
-        </h2>
+          <h2 class="hero-title">
+            <span class="hero-highlight">Suas fotos de jogo</span> organizadas e fáceis de acessar
+          </h2>
 
-        <p class="hero-subtitle">
-          Eu fotografo as partidas e entrego as imagens em uma galeria simples de usar.
-          Você encontra seu jogo, vê todas as fotos e fala comigo pelo WhatsApp para combinar o download em alta qualidade.
-        </p>
+          <p class="hero-subtitle">
+            Eu fotografo as partidas e entrego as imagens em uma galeria simples de usar.
+            Você encontra seu jogo, vê todas as fotos e fala comigo pelo WhatsApp para combinar o download em alta qualidade.
+          </p>
 
-        <ul class="hero-beneficios">
-          <li>
-            <i class="fas fa-check-circle"></i>
-            <span>Galerias separadas por time, campeonato e data.</span>
-          </li>
-          <li>
-            <i class="fas fa-check-circle"></i>
-            <span>Visualize as fotos em qualquer dispositivo, sem precisar instalar nada.</span>
-          </li>
-          <li>
-            <i class="fas fa-check-circle"></i>
-            <span>Fale direto comigo no WhatsApp para tirar dúvidas e combinar detalhes.</span>
-          </li>
-        </ul>
+          <ul class="hero-beneficios">
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>Galerias separadas por time, campeonato e data.</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>Visualize as fotos em qualquer dispositivo, sem precisar instalar nada.</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>Fale direto comigo no WhatsApp para tirar dúvidas e combinar detalhes.</span>
+            </li>
+          </ul>
 
-        <div class="botoes-acao">
-          <a
-            class="btn-whatsapp"
-            href="https://wa.me/5591991075804"
-            target="_blank"
-          >
-            <i class="fab fa-whatsapp"></i>
-            Falar no WhatsApp
-          </a>
+          <div class="botoes-acao">
+            <a
+              class="btn-whatsapp"
+              href="https://wa.me/5591991075804"
+              target="_blank"
+            >
+              <i class="fab fa-whatsapp"></i>
+              Falar no WhatsApp
+            </a>
 
-          <a
-            class="btn-secundario"
-            href="#galerias"
-          >
-            <i class="fas fa-image"></i>
-            Ver galerias
-          </a>
+            <a
+              class="btn-secundario"
+              href="#galerias"
+            >
+              <i class="fas fa-image"></i>
+              Ver galerias
+            </a>
+          </div>
         </div>
+
+        <aside class="hero-lateral">
+          <div class="hero-lateral-titulo">
+            Como vai funcionar o site
+          </div>
+          <p>
+            Esta página ainda é um teste, mas já está pronta para crescer.
+            As próximas seções vão mostrar o passo a passo para encontrar seu jogo,
+            ver as fotos e entrar em contato comigo.
+          </p>
+          <p class="hero-lateral-destaque">
+            <i class="fas fa-circle-play"></i>
+            Próximo passo: seção <strong>“Como funciona”</strong> logo abaixo.
+          </p>
+        </aside>
+      </section>
+    </div>
+
+    <!-- SEÇÃO COMO FUNCIONA -->
+    <section class="secao" id="como-funciona">
+      <div class="secao-cabecalho">
+        <div class="secao-kicker">Como funciona</div>
+        <h2 class="secao-titulo">Do campo até a sua galeria de fotos</h2>
+        <p class="secao-subtitulo">
+          A ideia é que você não precise se preocupar com nada técnico.
+          Eu organizo as fotos e você só precisa encontrar o seu jogo e falar comigo.
+        </p>
       </div>
 
-      <aside class="hero-lateral">
-        <div class="hero-lateral-titulo">
-          Como vai funcionar o site
-        </div>
-        <p>
-          Esta página ainda é um teste, mas já está pronta para crescer.
-          As próximas seções vão mostrar o passo a passo para encontrar seu jogo,
-          ver as fotos e entrar em contato comigo.
-        </p>
-        <p class="hero-lateral-destaque">
-          <i class="fas fa-circle-play"></i>
-          Próximo passo: seção <strong>“Como funciona”</strong> logo abaixo.
-        </p>
-      </aside>
+      <div class="como-funciona-grid">
+        <!-- Etapa 1 -->
+        <article class="como-card">
+          <div class="como-etapa">
+            <span class="como-etapa-numero">1</span>
+            <span>No dia do jogo</span>
+          </div>
+          <h3 class="como-titulo">Eu fotografo a partida inteira</h3>
+          <p class="como-texto">
+            Durante o jogo, registro os principais momentos: gols, defesas, comemorações,
+            fotos individuais e de grupo. Tudo focado em mostrar você em campo.
+          </p>
+          <div class="como-icons">
+            <i class="fas fa-camera"></i>
+            <i class="fas fa-bolt"></i>
+          </div>
+        </article>
+
+        <!-- Etapa 2 -->
+        <article class="como-card">
+          <div class="como-etapa">
+            <span class="como-etapa-numero">2</span>
+            <span>Depois do jogo</span>
+          </div>
+          <h3 class="como-titulo">Organizo as fotos em uma galeria</h3>
+          <p class="como-texto">
+            Separo as imagens, faço os ajustes básicos e publico em uma galeria
+            organizada por campeonato, data e times. Assim fica fácil achar seu jogo.
+          </p>
+          <div class="como-icons">
+            <i class="fas fa-folder-open"></i>
+            <i class="fas fa-images"></i>
+          </div>
+        </article>
+
+        <!-- Etapa 3 -->
+        <article class="como-card">
+          <div class="como-etapa">
+            <span class="como-etapa-numero">3</span>
+            <span>Você escolhe as fotos</span>
+          </div>
+          <h3 class="como-titulo">Fala comigo e recebe em alta</h3>
+          <p class="como-texto">
+            Você acessa a galeria, escolhe as fotos que gostou e fala comigo pelo WhatsApp.
+            A partir daí combinamos forma de envio e condições para receber tudo em alta qualidade.
+          </p>
+          <div class="como-icons">
+            <i class="fab fa-whatsapp"></i>
+            <i class="fas fa-cloud-download-alt"></i>
+          </div>
+        </article>
+      </div>
     </section>
   </main>
 
