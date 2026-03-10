@@ -21,22 +21,27 @@
 
   <style>
     /* =========
-       PALETA DE CORES
+       PALETA: PRETO · VERMELHO · BRANCO
        ========= */
-   :root {
-  --cor-fundo:        #080808;
-  --cor-fundo-card:   #111111;
-  --cor-texto:        #f5f5f5;
-  --cor-texto-sec:    #b0b0b0;
-  --cor-borda:        #ffffff18;
-  --cor-destaque:     #e02020;   /* vermelho principal */
-  --cor-sucesso:      #25d366;   /* verde WhatsApp continua */
-  --cor-header:       rgba(8,8,8,0.97);
-  --cor-footer:       #050505;
+    :root {
+      --cor-fundo:        #080808;
+      --cor-fundo-card:   #111111;
+      --cor-fundo-alt:    #0f0f0f;
+      --cor-texto:        #f5f5f5;
+      --cor-texto-sec:    #aaaaaa;
+      --cor-borda:        #ffffff18;
+      --cor-destaque:     #e02020;   /* vermelho principal */
+      --cor-destaque-2:   #ff4444;   /* vermelho mais claro (hover) */
+      --cor-sucesso:      #25d366;   /* verde WhatsApp */
+      --cor-header:       rgba(8,8,8,0.97);
+      --cor-footer:       #060606;
 
-  --fonte-titulo:     'Oswald', sans-serif;
-  --fonte-texto:      'Inter',  sans-serif;
-}
+      --fonte-titulo:     'Oswald', sans-serif;
+      --fonte-texto:      'Inter',  sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     /* RESET */
@@ -67,13 +72,13 @@
       text-transform: uppercase;
     }
 
-    h1 { font-size: 2.2rem; font-weight: 700; line-height: 1.1; }
-    h2 { font-size: 2rem;  font-weight: 600; line-height: 1.2; }
-    h3 { font-size: 1.4rem; font-weight: 600; line-height: 1.3; }
+    h1 { font-size: 2.4rem; font-weight: 700; line-height: 1.1; }
+    h2 { font-size: 2rem;   font-weight: 600; line-height: 1.2; }
+    h3 { font-size: 1.3rem; font-weight: 600; line-height: 1.3; }
 
     p {
       font-size: 1rem;
-      line-height: 1.7;
+      line-height: 1.75;
       color: var(--cor-texto-sec);
     }
 
@@ -83,13 +88,15 @@
     }
 
     @media (max-width: 768px) {
-      h1 { font-size: 1.6rem; }
-      h2 { font-size: 1.7rem; }
-      h3 { font-size: 1.3rem; }
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.6rem; }
+      h3 { font-size: 1.2rem; }
       p  { font-size: 0.95rem; }
     }
 
-    /* HEADER + MENU */
+    /* =========
+       HEADER + MENU
+       ========= */
     header {
       background: var(--cor-header);
       border-bottom: 1px solid var(--cor-borda);
@@ -108,23 +115,37 @@
       gap: 1.5rem;
     }
 
+    /* LOGO COM FOTO DE PERFIL */
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
       white-space: nowrap;
     }
 
-    .logo-icon {
-      width: 28px;
-      height: 28px;
+    .logo-foto {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 2px solid var(--cor-destaque);
+      object-fit: cover;
+      display: block;
+      /* fallback se a foto ainda não estiver no repositório */
+      background: #222;
+    }
+
+    /* Ícone de fallback (aparece se não tiver a foto) */
+    .logo-foto-fallback {
+      width: 34px;
+      height: 34px;
       border-radius: 999px;
       border: 2px solid var(--cor-destaque);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--cor-destaque);
+      background: #1a1a1a;
     }
 
     .logo-text {
@@ -138,7 +159,6 @@
       display: flex;
       align-items: center;
       gap: 1.5rem;
-      font-size: 0.9rem;
     }
 
     .nav-links {
@@ -154,6 +174,7 @@
       font-size: 0.8rem;
       position: relative;
       padding-bottom: 0.2rem;
+      transition: color 0.2s;
     }
 
     .nav-links a::after {
@@ -167,7 +188,12 @@
       transition: width 0.25s ease;
     }
 
-    .nav-links a:hover::after {
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.ativo::after {
       width: 100%;
     }
 
@@ -175,21 +201,22 @@
       color: var(--cor-texto);
     }
 
-    .nav-links a.ativo::after {
-      width: 100%;
-    }
-
     .nav-cta {
       display: flex;
       align-items: center;
       gap: 0.4rem;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       padding: 0.4rem 0.9rem;
       border-radius: 999px;
       border: 1px solid var(--cor-sucesso);
       color: var(--cor-sucesso);
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: #25d36618;
     }
 
     .nav-cta i {
@@ -209,20 +236,29 @@
       }
 
       .nav-links {
-        gap: 0.9rem;
+        gap: 0.75rem;
+      }
+
+      .nav-links a {
+        font-size: 0.75rem;
       }
 
       .nav-cta {
         padding: 0.35rem 0.75rem;
-        font-size: 0.75rem;
+        font-size: 0.72rem;
       }
     }
 
-    /* HERO / MAIN */
+    /* =========
+       MAIN
+       ========= */
     main {
       flex: 1;
     }
 
+    /* =========
+       HERO
+       ========= */
     .hero-wrapper {
       display: flex;
       align-items: center;
@@ -234,10 +270,10 @@
       max-width: 900px;
       width: 100%;
       background: var(--cor-fundo-card);
-      border-radius: 12px;
+      border-radius: 14px;
       border: 1px solid var(--cor-borda);
       padding: 2.8rem 2.4rem;
-      box-shadow: 0 18px 35px rgba(0,0,0,0.6);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.7);
       display: grid;
       grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
       gap: 2rem;
@@ -248,30 +284,47 @@
       .hero-container {
         grid-template-columns: 1fr;
         text-align: center;
+        padding: 1.8rem 1.4rem;
       }
     }
 
     .hero-kicker {
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
       color: var(--cor-destaque);
       text-transform: uppercase;
       margin-bottom: 0.75rem;
+    }
+
+    .hero-kicker i {
+      font-size: 0.85rem;
     }
 
     .hero-title {
       margin-bottom: 0.8rem;
     }
 
+    .hero-highlight {
+      color: var(--cor-destaque);
+    }
+
     .hero-subtitle {
       font-size: 0.95rem;
       color: var(--cor-texto-sec);
       margin-bottom: 1.5rem;
+      max-width: 480px;
     }
 
-    .hero-highlight {
-      color: var(--cor-destaque);
+    @media (max-width: 800px) {
+      .hero-subtitle {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
 
     .hero-beneficios {
@@ -279,7 +332,7 @@
       text-align: left;
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: 0.55rem;
       margin-bottom: 1.8rem;
     }
 
@@ -287,55 +340,74 @@
       display: flex;
       align-items: flex-start;
       gap: 0.5rem;
-      font-size: 0.95rem;
+      font-size: 0.93rem;
       color: var(--cor-texto-sec);
     }
 
     .hero-beneficios i {
-      color: var(--cor-sucesso);
-      margin-top: 0.15rem;
+      color: var(--cor-destaque);
+      margin-top: 0.18rem;
+      font-size: 0.85rem;
     }
 
     @media (max-width: 800px) {
       .hero-beneficios {
         text-align: left;
-        align-items: flex-start;
+        max-width: 340px;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
 
+    /* Painel lateral do hero */
     .hero-lateral {
       border-radius: 12px;
-      border: 1px dashed var(--cor-borda);
-      padding: 1.4rem 1.2rem;
-      background: radial-gradient(circle at top left, #33333333 0, transparent 60%);
+      border: 1px solid var(--cor-destaque)44;
+      padding: 1.6rem 1.3rem;
+      background: linear-gradient(135deg, #1a0808 0%, #110000 100%);
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
     }
 
     .hero-lateral-titulo {
-      font-size: 0.95rem;
+      font-family: var(--fonte-titulo);
+      font-size: 0.9rem;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 0.7rem;
-      color: var(--cor-texto);
+      letter-spacing: 0.14em;
+      color: var(--cor-destaque);
     }
 
     .hero-lateral p {
-      font-size: 0.9rem;
-      margin-bottom: 0.9rem;
+      font-size: 0.88rem;
+      line-height: 1.65;
     }
 
-    .hero-lateral-destaque {
-      display: inline-flex;
+    .hero-lateral-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 0.3rem;
+    }
+
+    .hero-lateral-stat-item {
+      display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
       font-size: 0.85rem;
-      color: var(--cor-destaque);
+      color: var(--cor-texto-sec);
     }
 
-    .hero-lateral-destaque i {
+    .hero-lateral-stat-item i {
       color: var(--cor-destaque);
+      font-size: 0.9rem;
+      width: 16px;
+      text-align: center;
     }
 
-    /* BOTÕES */
+    /* =========
+       BOTÕES
+       ========= */
     .botoes-acao {
       display: flex;
       flex-wrap: wrap;
@@ -353,7 +425,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.55rem;
+      gap: 0.5rem;
       padding: 0.85rem 1.8rem;
       border-radius: 999px;
       background: var(--cor-sucesso);
@@ -361,32 +433,59 @@
       font-family: var(--fonte-texto);
       font-weight: 700;
       text-transform: uppercase;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       letter-spacing: 0.08em;
       border: none;
       cursor: pointer;
       transition: all 0.25s ease;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.5);
+      box-shadow: 0 6px 20px rgba(37,211,102,0.25);
       text-decoration: none;
       white-space: nowrap;
     }
 
     .btn-whatsapp i {
-      font-size: 1.1rem;
-      color: #ffffff;
+      font-size: 1.05rem;
     }
 
     .btn-whatsapp:hover {
       background: #2fe077;
       transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(0,0,0,0.6);
+      box-shadow: 0 10px 28px rgba(37,211,102,0.35);
+    }
+
+    .btn-primario {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 999px;
+      background: var(--cor-destaque);
+      color: #ffffff;
+      font-family: var(--fonte-texto);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 20px rgba(224,32,32,0.3);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primario:hover {
+      background: var(--cor-destaque-2);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(224,32,32,0.4);
     }
 
     .btn-secundario {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.55rem;
+      gap: 0.5rem;
       padding: 0.8rem 1.6rem;
       border-radius: 999px;
       background: transparent;
@@ -410,17 +509,28 @@
     .btn-secundario:hover {
       border-color: var(--cor-destaque);
       color: var(--cor-destaque);
-      background: #ffffff05;
+      background: #e0202008;
       transform: translateY(-1px);
     }
 
     /* =========
-       SEÇÃO COMO FUNCIONA
+       DIVISOR DE SEÇÃO
+       ========= */
+    .secao-divider {
+      width: 48px;
+      height: 3px;
+      background: var(--cor-destaque);
+      border-radius: 999px;
+      margin: 0 auto 1.2rem;
+    }
+
+    /* =========
+       SEÇÃO GENÉRICA
        ========= */
     .secao {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 0 1.5rem 2.5rem;
+      padding: 0 1.5rem 3rem;
     }
 
     .secao-cabecalho {
@@ -429,25 +539,32 @@
     }
 
     .secao-kicker {
-      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.2em;
       color: var(--cor-destaque);
       margin-bottom: 0.5rem;
     }
 
     .secao-titulo {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       margin-bottom: 0.6rem;
+      color: #fff;
     }
 
     .secao-subtitulo {
-      font-size: 0.95rem;
+      font-size: 0.93rem;
       color: var(--cor-texto-sec);
-      max-width: 600px;
+      max-width: 580px;
       margin: 0 auto;
     }
 
+    /* =========
+       COMO FUNCIONA
+       ========= */
     .como-funciona-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -457,6 +574,8 @@
     @media (max-width: 900px) {
       .como-funciona-grid {
         grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
       }
     }
 
@@ -464,56 +583,66 @@
       background: var(--cor-fundo-card);
       border-radius: 12px;
       border: 1px solid var(--cor-borda);
-      padding: 1.3rem 1.1rem;
+      border-top: 3px solid var(--cor-destaque);
+      padding: 1.4rem 1.2rem;
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
+      transition: box-shadow 0.2s;
+    }
+
+    .como-card:hover {
+      box-shadow: 0 10px 28px rgba(224,32,32,0.12);
     }
 
     .como-etapa {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
       color: var(--cor-texto-sec);
+      margin-bottom: 0.2rem;
     }
 
     .como-etapa-numero {
-      width: 22px;
-      height: 22px;
+      width: 24px;
+      height: 24px;
       border-radius: 999px;
-      border: 1px solid var(--cor-borda);
+      background: var(--cor-destaque);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 0.8rem;
-      color: var(--cor-destaque);
+      color: #fff;
+      font-weight: 700;
     }
 
     .como-titulo {
       font-size: 1rem;
+      color: #fff;
     }
 
     .como-texto {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--cor-texto-sec);
+      line-height: 1.65;
     }
 
     .como-icons {
-      margin-top: 0.3rem;
+      margin-top: 0.5rem;
       font-size: 1.1rem;
       color: var(--cor-destaque);
       display: flex;
-      gap: 0.4rem;
+      gap: 0.5rem;
     }
 
     /* =========
-       SEÇÃO GALERIAS
+       GALERIAS
        ========= */
     .galerias-wrapper {
-      background: #050505;
+      background: var(--cor-fundo-alt);
       border-top: 1px solid var(--cor-borda);
       border-bottom: 1px solid var(--cor-borda);
     }
@@ -521,7 +650,36 @@
     .galerias {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 2.5rem 1.5rem 3rem;
+      padding: 3rem 1.5rem 3.5rem;
+    }
+
+    .galerias-filtro {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .filtro-btn {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--cor-borda);
+      color: var(--cor-texto-sec);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: var(--fonte-texto);
+    }
+
+    .filtro-btn:hover,
+    .filtro-btn.ativo {
+      border-color: var(--cor-destaque);
+      color: var(--cor-destaque);
+      background: #e0202010;
     }
 
     .galerias-grid {
@@ -536,7 +694,7 @@
       }
     }
 
-    @media (max-width: 650px) {
+    @media (max-width: 600px) {
       .galerias-grid {
         grid-template-columns: 1fr;
       }
@@ -549,25 +707,24 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      min-height: 100%;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
     }
 
     .card-galeria:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 30px rgba(0,0,0,0.7);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 32px rgba(224,32,32,0.18);
       border-color: var(--cor-destaque);
     }
 
     .card-galeria-thumb {
       position: relative;
-      height: 150px;
-      background: radial-gradient(circle at top left, #ffffff11 0, transparent 60%);
+      height: 155px;
+      background: linear-gradient(135deg, #1a0808 0%, #0f0f0f 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ffffff55;
-      font-size: 2.4rem;
+      color: #ffffff22;
+      font-size: 2.6rem;
     }
 
     .card-galeria-badge {
@@ -575,32 +732,49 @@
       top: 10px;
       right: 10px;
       background: var(--cor-destaque);
-      color: #000;
-      font-size: 0.75rem;
+      color: #fff;
+      font-size: 0.72rem;
       font-weight: 700;
-      padding: 0.25rem 0.7rem;
+      padding: 0.22rem 0.65rem;
       border-radius: 999px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
+    }
+
+    .card-galeria-tipo {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #ffffff15;
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      backdrop-filter: blur(4px);
     }
 
     .card-galeria-body {
       padding: 1rem 1rem 1.1rem;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: 0.45rem;
       flex: 1;
     }
 
     .card-galeria-titulo {
-      font-size: 1rem;
+      font-size: 0.95rem;
+      color: #fff;
+      line-height: 1.35;
     }
 
     .card-galeria-info {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem 1.2rem;
-      font-size: 0.85rem;
+      gap: 0.5rem 1rem;
+      font-size: 0.82rem;
       color: var(--cor-texto-sec);
     }
 
@@ -611,36 +785,58 @@
     }
 
     .card-galeria-info-item i {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: var(--cor-destaque);
     }
 
     .card-galeria-rodape {
-      margin-top: 0.6rem;
+      margin-top: 0.7rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 0.5rem;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--cor-texto-sec);
+      border-top: 1px solid var(--cor-borda);
+      padding-top: 0.7rem;
     }
 
     .card-galeria-link {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.3rem;
       color: var(--cor-destaque);
+      transition: gap 0.2s;
+    }
+
+    .card-galeria-link:hover {
+      gap: 0.5rem;
     }
 
     .card-galeria-link i {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
+    }
+
+    /* CTA EMBAIXO DAS GALERIAS */
+    .galerias-cta {
+      text-align: center;
+      margin-top: 2.5rem;
+      padding: 1.8rem 1.5rem;
+      border: 1px dashed var(--cor-borda);
+      border-radius: 12px;
+      background: #0f0000;
+    }
+
+    .galerias-cta p {
+      margin-bottom: 1rem;
+      font-size: 0.93rem;
     }
 
     /* =========
-       RODAPÉ COMPLETO
+       RODAPÉ
        ========= */
     .footer-main {
       border-top: 1px solid var(--cor-borda);
@@ -650,441 +846,12 @@
     .footer-inner {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 2rem 1.5rem 1.5rem;
+      padding: 2.2rem 1.5rem 1.5rem;
       display: grid;
       grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr) minmax(0, 1.3fr);
       gap: 2rem;
     }
 
     @media (max-width: 900px) {
-      .footer-inner {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
+      .footer
 
-    @media (max-width: 650px) {
-      .footer-inner {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .footer-col-titulo {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      margin-bottom: 0.6rem;
-      color: var(--cor-texto);
-    }
-
-    .footer-brand {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .footer-brand p {
-      font-size: 0.9rem;
-    }
-
-    .footer-nav,
-    .footer-contato-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-      font-size: 0.9rem;
-    }
-
-    .footer-nav a {
-      color: var(--cor-texto-sec);
-    }
-
-    .footer-nav a:hover {
-      color: var(--cor-destaque);
-    }
-
-    .footer-contato-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      color: var(--cor-texto-sec);
-    }
-
-    .footer-contato-item i {
-      color: var(--cor-destaque);
-      font-size: 0.95rem;
-    }
-
-    .footer-bottom {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 1.5rem 1rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 0.5rem;
-      font-size: 0.8rem;
-      color: #777;
-      border-top: 1px solid var(--cor-borda);
-    }
-
-    .footer-bottom a {
-      color: var(--cor-texto-sec);
-    }
-
-    .footer-bottom a:hover {
-      color: var(--cor-destaque);
-    }
-
-  </style>
-</head>
-<body>
-
-  <!-- HEADER COM MENU -->
-  <header>
-  <div class="header-inner">
-    <a href="#home" class="logo">
-      <img src="perfil-marcos.jpg"
-           alt="Foto de perfil do Marcos"
-           class="logo-foto">
-      <div class="logo-text">Marcos · Foto Futebol</div>
-    </a>
-
-    <nav>
-      <div class="nav-links">
-        <a href="#home" class="ativo">Home</a>
-        <a href="#galerias">Galerias</a>
-        <a href="#como-funciona">Como funciona</a>
-        <a href="#contato">Contato</a>
-      </div>
-      <a
-        class="nav-cta"
-        href="https://wa.me/5591991075804"
-        target="_blank"
-      >
-        <i class="fab fa-whatsapp"></i>
-        WhatsApp
-      </a>
-    </nav>
-  </div>
-</header>
-      <nav>
-        <div class="nav-links">
-          <a href="#home" class="ativo">Home</a>
-          <a href="#galerias">Galerias</a>
-          <a href="#como-funciona">Como funciona</a>
-          <a href="#contato">Contato</a>
-        </div>
-        <a
-          class="nav-cta"
-          href="https://wa.me/5591991075804"
-          target="_blank"
-        >
-          <i class="fab fa-whatsapp"></i>
-          WhatsApp
-        </a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <!-- HERO PRINCIPAL -->
-    <div class="hero-wrapper" id="home">
-      <section class="hero-container">
-        <div>
-          <div class="hero-kicker">Fotografia esportiva</div>
-
-          <h2 class="hero-title">
-            <span class="hero-highlight">Suas fotos de jogo</span> organizadas e fáceis de acessar
-          </h2>
-
-          <p class="hero-subtitle">
-            Eu fotografo as partidas e entrego as imagens em uma galeria simples de usar.
-            Você encontra seu jogo, vê todas as fotos e fala comigo pelo WhatsApp para combinar o download em alta qualidade.
-          </p>
-
-          <ul class="hero-beneficios">
-            <li>
-              <i class="fas fa-check-circle"></i>
-              <span>Galerias separadas por time, campeonato e data.</span>
-            </li>
-            <li>
-              <i class="fas fa-check-circle"></i>
-              <span>Visualize as fotos em qualquer dispositivo, sem precisar instalar nada.</span>
-            </li>
-            <li>
-              <i class="fas fa-check-circle"></i>
-              <span>Fale direto comigo no WhatsApp para tirar dúvidas e combinar detalhes.</span>
-            </li>
-          </ul>
-
-          <div class="botoes-acao">
-            <a
-              class="btn-whatsapp"
-              href="https://wa.me/5591991075804"
-              target="_blank"
-            >
-              <i class="fab fa-whatsapp"></i>
-              Falar no WhatsApp
-            </a>
-
-            <a
-              class="btn-secundario"
-              href="#galerias"
-            >
-              <i class="fas fa-image"></i>
-              Ver galerias
-            </a>
-          </div>
-        </div>
-
-        <aside class="hero-lateral">
-          <div class="hero-lateral-titulo">
-            Como vai funcionar o site
-          </div>
-          <p>
-            Esta página ainda é um teste, mas já está pronta para crescer.
-            As próximas seções vão mostrar o passo a passo para encontrar seu jogo,
-            ver as fotos e entrar em contato comigo.
-          </p>
-          <p class="hero-lateral-destaque">
-            <i class="fas fa-circle-play"></i>
-            Role a página para ver <strong>“Como funciona”</strong> e as <strong>galerias de teste</strong>.
-          </p>
-        </aside>
-      </section>
-    </div>
-
-    <!-- SEÇÃO COMO FUNCIONA -->
-    <section class="secao" id="como-funciona">
-      <div class="secao-cabecalho">
-        <div class="secao-kicker">Como funciona</div>
-        <h2 class="secao-titulo">Do campo até a sua galeria de fotos</h2>
-        <p class="secao-subtitulo">
-          A ideia é que você não precise se preocupar com nada técnico.
-          Eu organizo as fotos e você só precisa encontrar o seu jogo e falar comigo.
-        </p>
-      </div>
-
-      <div class="como-funciona-grid">
-        <!-- Etapa 1 -->
-        <article class="como-card">
-          <div class="como-etapa">
-            <span class="como-etapa-numero">1</span>
-            <span>No dia do jogo</span>
-          </div>
-          <h3 class="como-titulo">Eu fotografo a partida inteira</h3>
-          <p class="como-texto">
-            Durante o jogo, registro os principais momentos: gols, defesas, comemorações,
-            fotos individuais e de grupo. Tudo focado em mostrar você em campo.
-          </p>
-          <div class="como-icons">
-            <i class="fas fa-camera"></i>
-            <i class="fas fa-bolt"></i>
-          </div>
-        </article>
-
-        <!-- Etapa 2 -->
-        <article class="como-card">
-          <div class="como-etapa">
-            <span class="como-etapa-numero">2</span>
-            <span>Depois do jogo</span>
-          </div>
-          <h3 class="como-titulo">Organizo as fotos em uma galeria</h3>
-          <p class="como-texto">
-            Separo as imagens, faço os ajustes básicos e publico em uma galeria
-            organizada por campeonato, data e times. Assim fica fácil achar seu jogo.
-          </p>
-          <div class="como-icons">
-            <i class="fas fa-folder-open"></i>
-            <i class="fas fa-images"></i>
-          </div>
-        </article>
-
-        <!-- Etapa 3 -->
-        <article class="como-card">
-          <div class="como-etapa">
-            <span class="como-etapa-numero">3</span>
-            <span>Você escolhe as fotos</span>
-          </div>
-          <h3 class="como-titulo">Fala comigo e recebe em alta</h3>
-          <p class="como-texto">
-            Você acessa a galeria, escolhe as fotos que gostou e fala comigo pelo WhatsApp.
-            A partir daí combinamos forma de envio e condições para receber tudo em alta qualidade.
-          </p>
-          <div class="como-icons">
-            <i class="fab fa-whatsapp"></i>
-            <i class="fas fa-cloud-download-alt"></i>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- SEÇÃO GALERIAS RECENTES -->
-    <div class="galerias-wrapper" id="galerias">
-      <section class="galerias">
-        <div class="secao-cabecalho">
-          <div class="secao-kicker">Galerias recentes</div>
-          <h2 class="secao-titulo">Alguns jogos já fotografados</h2>
-          <p class="secao-subtitulo">
-            Aqui é só um exemplo de como as galerias vão aparecer. Depois você pode trocar os textos e links
-            para apontar para o Google Drive, OneDrive, ou outra plataforma onde as fotos estiverem.
-          </p>
-        </div>
-
-        <div class="galerias-grid">
-          <!-- Card 1 -->
-          <article class="card-galeria">
-            <div class="card-galeria-thumb">
-              <i class="fas fa-image"></i>
-              <div class="card-galeria-badge">42 fotos</div>
-            </div>
-            <div class="card-galeria-body">
-              <h3 class="card-galeria-titulo">Sub-20 · Time Azul x Time Vermelho</h3>
-              <div class="card-galeria-info">
-                <div class="card-galeria-info-item">
-                  <i class="fas fa-calendar-alt"></i>
-                  <span>02/03/2026</span>
-                </div>
-                <div class="card-galeria-info-item">
-                  <i class="fas fa-trophy"></i>
-                  <span>Copa da Cidade</span>
-                </div>
-              </div>
-              <div class="card-galeria-rodape">
-                <span>Galeria de teste 1</span>
-                <a
-                  class="card-galeria-link"
-                  href="#"
-                  target="_blank"
-                >
-                  Ver galeria
-                  <i class="fas fa-arrow-right"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 2 -->
-          <article class="card-galeria">
-            <div class="card-galeria-thumb">
-              <i class="fas fa-image"></i>
-              <div class="card-galeria-badge">35 fotos</div>
-            </div>
-            <div class="card-galeria-body">
-              <h3 class="card-galeria-titulo">Amistoso · Amigos do Marcos x Seleção Bairro</h3>
-              <div class="card-galeria-info">
-                <div class="card-galeria-info-item">
-                  <i class="fas fa-calendar-alt"></i>
-                  <span>15/02/2026</span>
-                </div>
-                <div class="card-galeria-info-item">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <span>Campo Municipal</span>
-                </div>
-              </div>
-              <div class="card-galeria-rodape">
-                <span>Galeria de teste 2</span>
-                <a
-                  class="card-galeria-link"
-                  href="#"
-                  target="_blank"
-                >
-                  Ver galeria
-                  <i class="fas fa-arrow-right"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 3 -->
-          <article class="card-galeria">
-            <div class="card-galeria-thumb">
-              <i class="fas fa-image"></i>
-              <div class="card-galeria-badge">58 fotos</div>
-            </div>
-            <div class="card-galeria-body">
-              <h3 class="card-galeria-titulo">Veteranos · União FC x Real Master</h3>
-              <div class="card-galeria-info">
-                <div class="card-galeria-info-item">
-                  <i class="fas fa-calendar-alt"></i>
-                  <span>28/01/2026</span>
-                </div>
-                <div class="card-galeria-info-item">
-                  <i class="fas fa-trophy"></i>
-                  <span>Taça Amigos</span>
-                </div>
-              </div>
-              <div class="card-galeria-rodape">
-                <span>Galeria de teste 3</span>
-                <a
-                  class="card-galeria-link"
-                  href="#"
-                  target="_blank"
-                >
-                  Ver galeria
-                  <i class="fas fa-arrow-right"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-    </div>
-  </main>
-
-  <!-- RODAPÉ COMPLETO -->
-  <footer class="footer-main" id="contato">
-    <div class="footer-inner">
-      <!-- Coluna 1: Marca -->
-      <div class="footer-brand">
-        <div class="footer-col-titulo">Marcos · Fotografia de Futebol</div>
-        <p>
-          Registro os momentos dos seus jogos e organizo tudo em galerias simples de navegar.
-          Este site ainda está em construção, mas já mostra como será o fluxo completo.
-        </p>
-      </div>
-
-      <!-- Coluna 2: Navegação -->
-      <div>
-        <div class="footer-col-titulo">Navegação</div>
-        <ul class="footer-nav">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#galerias">Galerias</a></li>
-          <li><a href="#como-funciona">Como funciona</a></li>
-          <li><a href="#contato">Contato</a></li>
-        </ul>
-      </div>
-
-      <!-- Coluna 3: Contato -->
-      <div>
-        <div class="footer-col-titulo">Contato</div>
-        <ul class="footer-contato-list">
-          <li class="footer-contato-item">
-            <i class="fab fa-whatsapp"></i>
-            <a href="https://wa.me/5591991075804" target="_blank">
-              WhatsApp: (91) 99107-5804
-            </a>
-          </li>
-          <li class="footer-contato-item">
-            <i class="fas fa-envelope"></i>
-            <span>E-mail: mercapago18@gmail.com</span>
-          </li>
-          <li class="footer-contato-item">
-            <i class="fab fa-instagram"></i>
-            <a href="#" target="_blank">
-              Instagram: @Mv_soares07
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <span>© 2026 Marcos – Fotografia de Futebol. Todos os direitos reservados.</span>
-      <span>Site em desenvolvimento no GitHub Pages.</span>
-    </div>
-  </footer>
-
-</body>
-</html>
