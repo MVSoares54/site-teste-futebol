@@ -932,6 +932,64 @@
     }
 
     .footer-bottom a:hover { opacity: 0.8; }
+ /* =========
+   LIGHTBOX
+   ========= */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.93);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  cursor: zoom-out;
+}
+
+.lightbox-overlay.ativo {
+  display: flex;
+}
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  cursor: default;
+  animation: lightbox-entrada 0.25s ease;
+}
+
+@keyframes lightbox-entrada {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.lightbox-fechar {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  z-index: 1001;
+}
+
+.lightbox-fechar:hover {
+  opacity: 1;
+}
   </style>
 </head>
 <body>
@@ -1515,6 +1573,34 @@
       <a href="https://wa.me/5591991075804" target="_blank" rel="noopener">Solicitar orçamento</a>
     </div>
   </footer>
+<script>
+  // Abre o lightbox ao clicar em qualquer foto da galeria
+  document.querySelectorAll('.card-galeria-thumb-img').forEach(function(img) {
+    img.addEventListener('click', function() {
+      document.getElementById('lightbox-img').src = this.src;
+      document.getElementById('lightbox-img').alt = this.alt;
+      document.getElementById('lightbox').classList.add('ativo');
+      document.body.style.overflow = 'hidden';
+    });
+  });
 
+  // Fecha o lightbox
+  function fecharLightbox() {
+    document.getElementById('lightbox').classList.remove('ativo');
+    document.body.style.overflow = '';
+  }
+
+  // Fecha com a tecla ESC
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') fecharLightbox();
+  });
+</script>
 </body>
 </html>
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" onclick="fecharLightbox()">
+  <button class="lightbox-fechar" onclick="fecharLightbox()">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
+</div>
