@@ -682,15 +682,22 @@
     }
 
     .card-galeria-thumb {
-      position: relative;
-      height: 155px;
-      background: linear-gradient(135deg, #1a0808 0%, #0f0f0f 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #ffffff22;
-      font-size: 2.6rem;
-    }
+  position: relative;
+  height: 220px;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card-galeria-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
 
     .card-galeria-badge {
       position: absolute;
@@ -1413,7 +1420,33 @@
       </div>
     </div>
   </div>
-
+  <!-- FOTO 11 -->
+  <div class="card-galeria">
+    <div class="card-galeria-thumb">
+      <img
+        src="img/vendidas/imgvendidasgoleiro-11.jpg.jpeg"
+        alt="Foto vendida 11"
+        class="card-galeria-thumb-img"
+      >
+      <span class="card-galeria-badge">Vendido</span>
+      <span class="card-galeria-tipo">Em breve</span>
+    </div>
+    <div class="card-galeria-body">
+      <h3 class="card-galeria-titulo">Foto 11</h3>
+      <div class="card-galeria-info">
+        <span class="card-galeria-info-item">
+          <i class="fa-solid fa-user"></i> Licenciada para atleta
+        </span>
+        <span class="card-galeria-info-item">
+          <i class="fa-solid fa-calendar"></i> 2026
+        </span>
+      </div>
+      <div class="card-galeria-rodape">
+        <span>Uso em redes sociais</span>
+        <span class="card-galeria-link">Destaque do portfólio</span>
+      </div>
+    </div>
+  </div>
 </div>
 
         <div class="galerias-cta">
