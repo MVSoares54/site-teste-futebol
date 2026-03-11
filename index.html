@@ -797,7 +797,138 @@
     }
 
     .galerias-cta p { margin-bottom: 1rem; font-size: 0.93rem; }
+/* =========
+   PRODUTOS
+   ========= */
+.produtos-wrapper {
+  background: var(--cor-fundo-alt);
+  border-top: 1px solid var(--cor-borda);
+  border-bottom: 1px solid var(--cor-borda);
+}
 
+.produtos {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 3.5rem;
+}
+
+.produtos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.6rem;
+}
+
+@media (max-width: 1000px) {
+  .produtos-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .produtos-grid { grid-template-columns: 1fr; }
+}
+
+.card-produto {
+  background: var(--cor-fundo-card);
+  border-radius: 12px;
+  border: 1px solid var(--cor-borda);
+  padding: 1.2rem 1.1rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.card-produto:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(224, 32, 32, 0.2);
+  border-color: var(--cor-destaque);
+}
+
+.card-produto-kicker {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--cor-destaque);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.card-produto-kicker i {
+  font-size: 0.85rem;
+}
+
+.card-produto-titulo {
+  font-size: 1rem;
+  color: #fff;
+}
+
+.card-produto-texto {
+  font-size: 0.9rem;
+  color: var(--cor-texto-sec);
+  line-height: 1.6;
+}
+
+.card-produto-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.3rem;
+}
+
+.card-produto-tag {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.18rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--cor-borda);
+  color: var(--cor-texto-sec);
+}
+
+.card-produto-rodape {
+  margin-top: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  color: var(--cor-texto-sec);
+}
+
+.card-produto-preco {
+  font-weight: 600;
+  color: #fff;
+}
+
+.card-produto-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  background: var(--cor-destaque);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.card-produto-btn i {
+  font-size: 0.85rem;
+}
+
+.card-produto-btn:hover {
+  background: var(--cor-destaque-2);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(224, 32, 32, 0.35);
+}
     /* =========
        RODAPÉ
        ========= */
@@ -1008,15 +1139,16 @@
   <span class="logo-text">Marcos · Foto</span>
 </a>
       <nav>
-        <div class="nav-links">
-          <a href="#como-funciona">Como funciona</a>
-          <a href="#galerias" class="ativo">Galerias</a>
-          <a href="#contato">Contato</a>
-        </div>
-        <a href="https://wa.me/559191991075804" target="_blank" rel="noopener" class="nav-cta">
-          <i class="fa-brands fa-whatsapp"></i> WhatsApp
-        </a>
-      </nav>
+  <div class="nav-links">
+    <a href="#como-funciona">Como funciona</a>
+    <a href="#galerias" class="ativo">Galerias</a>
+    <a href="#produtos">Produtos</a>
+    <a href="#contato">Contato</a>
+  </div>
+  <a href="https://wa.me/559191991075804" target="_blank" rel="noopener" class="nav-cta">
+    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+  </a>
+</nav>
     </div>
   </header>
 
@@ -1515,7 +1647,93 @@
         </div>
       </section>
     </div>
+    <!-- =========
+         PRODUTOS
+         ========= -->
+    <div class="produtos-wrapper">
+      <section id="produtos" class="produtos">
+        <div class="secao-cabecalho">
+          <div class="secao-divider"></div>
+          <div class="secao-kicker"><i class="fa-solid fa-bag-shopping"></i> Produtos</div>
+          <h2 class="secao-titulo">Para quem vive o futebol</h2>
+          <p class="secao-subtitulo">
+            Ebooks, materiais e indicações de produtos para ajudar atletas e apaixonados por futebol
+            a evoluírem dentro e fora de campo.
+          </p>
+        </div>
 
+        <div class="produtos-grid">
+
+          <!-- PRODUTO 1 – Ebook (exemplo) -->
+          <div class="card-produto">
+            <div class="card-produto-kicker">
+              <i class="fa-solid fa-book-open"></i> Ebook
+            </div>
+            <h3 class="card-produto-titulo">Guia do Goleiro Moderno</h3>
+            <p class="card-produto-texto">
+              Conteúdo focado em posicionamento, leitura de jogo e rotina de treinos para goleiros que querem
+              se destacar em qualquer categoria.
+            </p>
+            <div class="card-produto-tags">
+              <span class="card-produto-tag">Treino</span>
+              <span class="card-produto-tag">Goleiros</span>
+              <span class="card-produto-tag">Performance</span>
+            </div>
+            <div class="card-produto-rodape">
+              <span class="card-produto-preco">Em breve</span>
+              <a href="#" target="_blank" class="card-produto-btn">
+                Ver detalhes <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- PRODUTO 2 – Link de chuteira -->
+          <div class="card-produto">
+            <div class="card-produto-kicker">
+              <i class="fa-solid fa-shoe-prints"></i> Chuteiras
+            </div>
+            <h3 class="card-produto-titulo">Chuteiras indicadas para gramado</h3>
+            <p class="card-produto-texto">
+              Seleção de chuteiras que recomendo para gramado natural, com bom custo-benefício e conforto
+              para jogos e treinos.
+            </p>
+            <div class="card-produto-tags">
+              <span class="card-produto-tag">Gramado</span>
+              <span class="card-produto-tag">Custo-benefício</span>
+            </div>
+            <div class="card-produto-rodape">
+              <span class="card-produto-preco">Link externo</span>
+              <a href="https://seulinkdechuteiras.com" target="_blank" class="card-produto-btn">
+                Ir para o produto <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- PRODUTO 3 – Link de meião -->
+          <div class="card-produto">
+            <div class="card-produto-kicker">
+              <i class="fa-solid fa-socks"></i> Meiões
+            </div>
+            <h3 class="card-produto-titulo">Meiões resistentes para jogo</h3>
+            <p class="card-produto-texto">
+              Indicação de meiões confortáveis e resistentes para quem joga toda semana e quer durabilidade
+              sem abrir mão do estilo.
+            </p>
+            <div class="card-produto-tags">
+              <span class="card-produto-tag">Conforto</span>
+              <span class="card-produto-tag">Jogo</span>
+            </div>
+            <div class="card-produto-rodape">
+              <span class="card-produto-preco">Link externo</span>
+              <a href="https://seulinkdemeioes.com" target="_blank" class="card-produto-btn">
+                Ir para o produto <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
   </main>
 
   <!-- =========
